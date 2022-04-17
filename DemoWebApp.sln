@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.1.32407.343
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ASPNETCoreMVC5", "ASPNETCoreMVC5\ASPNETCoreMVC5.csproj", "{152BFD63-A19F-4B1D-AB56-67A014832385}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ASPNETCoreMVC6", "ASPNETCoreMVC6\ASPNETCoreMVC6.csproj", "{8388C8FE-6684-4C80-89C0-ABFCCFF6298E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{152BFD63-A19F-4B1D-AB56-67A014832385}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{152BFD63-A19F-4B1D-AB56-67A014832385}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{152BFD63-A19F-4B1D-AB56-67A014832385}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{152BFD63-A19F-4B1D-AB56-67A014832385}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8388C8FE-6684-4C80-89C0-ABFCCFF6298E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8388C8FE-6684-4C80-89C0-ABFCCFF6298E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8388C8FE-6684-4C80-89C0-ABFCCFF6298E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8388C8FE-6684-4C80-89C0-ABFCCFF6298E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {3278C40A-8AFB-4BDD-B8E3-C949E7328F4C}
+	EndGlobalSection
+EndGlobal
