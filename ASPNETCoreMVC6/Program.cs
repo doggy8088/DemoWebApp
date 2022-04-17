@@ -1,5 +1,9 @@
 var builder = WebApplication.CreateBuilder(args);
 
+builder.Services.AddTransient<MyService>();
+//builder.Services.AddScoped<MyService>();
+//builder.Services.AddSingleton<MyService>();
+
 ConfigureServices(builder);
 
 var app = builder.Build();

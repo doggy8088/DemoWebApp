@@ -7,10 +7,12 @@ namespace ASPNETCoreMVC6.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
+        private readonly MyService _myService;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ILogger<HomeController> logger, MyService myService)
         {
             _logger = logger;
+            _myService = myService;
         }
 
         public IActionResult Index()
@@ -20,6 +22,8 @@ namespace ASPNETCoreMVC6.Controllers
 
         public IActionResult Privacy()
         {
+            ViewBag.ID = _myService.DoSomething();
+
             return View();
         }
 
