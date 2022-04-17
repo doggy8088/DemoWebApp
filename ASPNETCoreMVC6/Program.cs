@@ -50,9 +50,10 @@ app.Run();
 
 static void ConfigureServices(WebApplicationBuilder builder)
 {
-
     // Add services to the container.
     builder.Services.AddControllersWithViews();
+
+    builder.Services.AddHealthChecks();
 }
 
 static void Configure(WebApplication app)
@@ -71,6 +72,8 @@ static void Configure(WebApplication app)
     app.UseRouting();
 
     app.UseAuthorization();
+
+    app.MapHealthChecks("/healthz");
 
     app.MapControllerRoute(
         name: "default",
