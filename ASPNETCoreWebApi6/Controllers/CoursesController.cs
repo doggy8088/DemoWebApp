@@ -25,7 +25,7 @@ namespace ASPNETCoreWebApi6.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Course>>> GetCourse()
         {
-            return await _context.Course.ToListAsync();
+            return await _context.Course.AsNoTracking().ToListAsync();
         }
 
         // GET: api/Courses/5
