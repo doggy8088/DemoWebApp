@@ -14,21 +14,17 @@ namespace ASPNETCoreMVC6.Controllers
     public class CoursesController : Controller
     {
         private readonly ContosouniversityContext _context;
-        private readonly swaggerClient swagger;
 
-        public CoursesController(ContosouniversityContext context, swaggerClient swagger)
+        public CoursesController(ContosouniversityContext context)
         {
             _context = context;
-            this.swagger = swagger;
         }
 
         // GET: Courses
         public async Task<IActionResult> Index()
         {
-            return View(await swagger.CoursesAllAsync());
-
-            //var contosouniversityContext = _context.Course.Include(c => c.Department);
-            //return View(await contosouniversityContext.ToListAsync());
+            var contosouniversityContext = _context.Course.Include(c => c.Department);
+            return View(await contosouniversityContext.ToListAsync());
         }
 
         // GET: Courses/Details/5

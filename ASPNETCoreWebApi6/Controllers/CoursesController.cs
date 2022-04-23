@@ -22,14 +22,14 @@ namespace ASPNETCoreWebApi6.Controllers
         }
 
         // GET: api/Courses
-        [HttpGet(Name = "GetCourses")]
+        [HttpGet]
         public async Task<ActionResult<IEnumerable<Course>>> GetCourse()
         {
             return await _context.Course.AsNoTracking().ToListAsync();
         }
 
         // GET: api/Courses/5
-        [HttpGet("{id}", Name = "GetCourse")]
+        [HttpGet("{id}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesDefaultResponseType]
@@ -47,7 +47,7 @@ namespace ASPNETCoreWebApi6.Controllers
 
         // PUT: api/Courses/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        [HttpPut("{id}", Name = "UpdateCourse")]
+        [HttpPut("{id}")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
@@ -82,7 +82,7 @@ namespace ASPNETCoreWebApi6.Controllers
 
         // POST: api/Courses
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        [HttpPost(Name = "CreateCourse")]
+        [HttpPost]
         [ProducesResponseType(StatusCodes.Status201Created)]
         [ProducesDefaultResponseType]
         public async Task<ActionResult<Course>> PostCourse(Course course)
@@ -94,7 +94,7 @@ namespace ASPNETCoreWebApi6.Controllers
         }
 
         // DELETE: api/Courses/5
-        [HttpDelete("{id}", Name = "DeleteCourse")]
+        [HttpDelete("{id}")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesDefaultResponseType]
