@@ -1,4 +1,12 @@
+using ASPNETCoreMVC6.Models;
+using Microsoft.EntityFrameworkCore;
+
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddDbContext<ContosouniversityContext>(options =>
+{
+    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
+});
 
 builder.Services.AddTransient<MyService>();
 //builder.Services.AddScoped<MyService>();
