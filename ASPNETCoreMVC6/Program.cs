@@ -1,7 +1,12 @@
+using ASPNETCoreMVC6;
 using ASPNETCoreMVC6.Models;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddHttpClient();
+
+builder.Services.AddSingleton<swaggerClient>(new swaggerClient("https://localhost:7238/", new HttpClient()));
 
 builder.Services.AddDbContext<ContosouniversityContext>(options =>
 {
