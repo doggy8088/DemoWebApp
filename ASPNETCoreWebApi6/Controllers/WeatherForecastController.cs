@@ -1,3 +1,4 @@
+using ASPNETCoreWebApi6.Exceptions;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ASPNETCoreWebApi6.Controllers
@@ -21,13 +22,29 @@ namespace ASPNETCoreWebApi6.Controllers
         [HttpGet(Name = "GetWeatherForecast")]
         public IEnumerable<WeatherForecast> Get()
         {
-            return Enumerable.Range(1, 5).Select(index => new WeatherForecast
+            var data = Enumerable.Range(1, 5).Select(index => new WeatherForecast
             {
                 Date = DateTime.Now.AddDays(index),
                 TemperatureC = Random.Shared.Next(-20, 55),
                 Summary = Summaries[Random.Shared.Next(Summaries.Length)]
             })
             .ToArray();
+
+            if (DateTime.Now.Second % 2 == 0)
+            {
+                throw new HttpResponseException()
+                {
+                    Status = 500,
+                    Value = new
+                    {
+                        ErrorNo = 100,
+                        ErrorMsg = "®É¶¡¿ù»~",
+                        ErrorLink = "https://blog.miniasp.com"
+                    }
+                };
+            }
+
+            return data;
         }
     }
 }
