@@ -22,18 +22,39 @@ namespace ASPNETCoreWebApi6.Controllers
         }
 
         // GET: api/Courses
-        [HttpGet]
-        public async Task<ActionResult<IEnumerable<Course>>> GetCourse()
+        [HttpGet(Name = nameof(GetCourseAll))]
+        public async Task<ActionResult<IEnumerable<Course>>> GetCourseAll()
         {
             return await _context.Course.AsNoTracking().ToListAsync();
         }
 
-        // GET: api/Courses/5
-        [HttpGet("{id}")]
+        [HttpGet("~/test")]
+        public ActionResult Test()
+        {
+            return Ok("Test");
+        }
+
+        [HttpGet("~/date/{*date:datetime}")]
+        public ActionResult GetDate(DateTime date)
+        {
+            return Ok(date);
+        }
+
+        // Open Redirection
+        [HttpGet("~/redirect/{*url}")]
+        public ActionResult GoTo(string url)
+        {
+            // "/api/Course/1"
+            // "https://xxx.com"
+            return LocalRedirect(url);
+        }
+
+        // GET: api/Courses/5?name=Will
+        [HttpGet("{id:int}", Name = nameof(GetCourseById))]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesDefaultResponseType]
-        public async Task<ActionResult<Course>> GetCourse(int id)
+        public async Task<ActionResult<Course>> GetCourseById(int id, string name)
         {
             var course = await _context.Course.FindAsync(id);
 
@@ -89,8 +110,7 @@ namespace ASPNETCoreWebApi6.Controllers
         {
             _context.Course.Add(course);
             await _context.SaveChangesAsync();
-
-            return CreatedAtAction("GetCourse", new { id = course.CourseId }, course);
+            return CreatedAtAction(nameof(GetCourseById), new { id = course.CourseId }, course);
         }
 
         // DELETE: api/Courses/5
