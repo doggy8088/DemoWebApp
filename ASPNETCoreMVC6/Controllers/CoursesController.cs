@@ -47,6 +47,7 @@ namespace ASPNETCoreMVC6.Controllers
         }
 
         // GET: Courses/Create
+        [ResponseCache(Location = ResponseCacheLocation.Client, Duration = 300)]
         public IActionResult Create()
         {
             ViewData["DepartmentId"] = new SelectList(_context.Department, "DepartmentId", "DepartmentId");
