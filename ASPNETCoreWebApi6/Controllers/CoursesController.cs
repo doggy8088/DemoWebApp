@@ -15,17 +15,27 @@ namespace ASPNETCoreWebApi6.Controllers
     public class CoursesController : ControllerBase
     {
         private readonly ContosouniversityContext _context;
+        private readonly ILogger<CoursesController> _logger;
 
-        public CoursesController(ContosouniversityContext context)
+        public CoursesController(ContosouniversityContext context, 
+            ILogger<CoursesController> logger)
         {
             _context = context;
+            _logger = logger;
         }
 
         // GET: api/Courses
         [HttpGet(Name = nameof(GetCourseAll))]
         public async Task<ActionResult<IEnumerable<Course>>> GetCourseAll()
         {
-            return await _context.Course.AsNoTracking().ToListAsync();
+            List<Course> courses = await _context.Course.AsNoTracking().ToListAsync();
+
+            using (_logger.BeginScope("GetCourseAll"))
+            {
+                _logger.LogInformation("GetCourseAll: {CourseCount}", courses.Count);
+            }
+
+            return courses;
         }
 
         [HttpGet("~/test")]
