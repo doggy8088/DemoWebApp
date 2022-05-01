@@ -10,6 +10,7 @@
   <ItemGroup>
     <Using Include="ASPNETCoreWebApi6.Models" />
     <Using Include="Microsoft.EntityFrameworkCore" />
+    <Using Include="Microsoft.Extensions.Options" />
     
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="6.0.4" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="6.0.4">

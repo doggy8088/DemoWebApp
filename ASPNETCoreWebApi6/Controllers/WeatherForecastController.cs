@@ -1,5 +1,6 @@
 using ASPNETCoreWebApi6.Exceptions;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Http;
 
 namespace ASPNETCoreWebApi6.Controllers
 {
@@ -7,16 +8,20 @@ namespace ASPNETCoreWebApi6.Controllers
     [Route("[controller]")]
     public class WeatherForecastController : ControllerBase
     {
+        private SmtpSettings _smtpSettings;
+        
         private static readonly string[] Summaries = new[]
         {
-        "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
-    };
+            "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
+        };
 
         private readonly ILogger<WeatherForecastController> _logger;
 
-        public WeatherForecastController(ILogger<WeatherForecastController> logger)
+        public WeatherForecastController(ILogger<WeatherForecastController> logger, 
+            IOptions<SmtpSettings> smtpSettings)
         {
             _logger = logger;
+            _smtpSettings = smtpSettings.Value;
         }
 
         [HttpGet(Name = "GetWeatherForecast")]
@@ -45,6 +50,20 @@ namespace ASPNETCoreWebApi6.Controllers
             }
 
             return data;
+        }
+
+        [HttpGet("~/config", Name = "GetConfig")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesDefaultResponseType]
+        public ActionResult<SmtpSettings> GetConfig()
+        {
+            if (this._smtpSettings == null)
+            {
+                return NotFound();
+            }
+            
+            return Ok(this._smtpSettings);
         }
     }
 }

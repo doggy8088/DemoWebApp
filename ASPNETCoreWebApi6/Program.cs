@@ -19,6 +19,8 @@ builder.Services.AddDbContext<ContosouniversityContext>(options =>
 
 // Add services to the container.
 
+builder.Services.Configure<SmtpSettings>(builder.Configuration.GetSection("SmtpSettings"));
+
 builder.Services.AddControllers(options =>
 {
     options.Filters.Add(new HttpResponseExceptionFilter());
