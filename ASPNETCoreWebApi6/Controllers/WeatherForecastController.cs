@@ -18,7 +18,7 @@ namespace ASPNETCoreWebApi6.Controllers
         private readonly ILogger<WeatherForecastController> _logger;
 
         public WeatherForecastController(ILogger<WeatherForecastController> logger, 
-            IOptions<SmtpSettings> smtpSettings)
+            IOptionsSnapshot<SmtpSettings> smtpSettings)
         {
             _logger = logger;
             _smtpSettings = smtpSettings.Value;
