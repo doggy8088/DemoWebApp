@@ -1,7 +1,13 @@
 using ASPNETCoreMVC6.Models;
+using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
+
+//builder.Services.Configure<HttpsRedirectionOptions>(config =>
+//{
+//    config.HttpsPort = 20443;
+//});
 
 builder.Services.AddDbContext<ContosouniversityContext>(options =>
 {
