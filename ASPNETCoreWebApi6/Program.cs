@@ -60,7 +60,7 @@ try
     var app = builder.Build();
 
     // Configure the HTTP request pipeline.
-    if (app.Environment.IsDevelopment())
+    if (app.Environment.IsEnvironment("Development"))
     {
         app.UseSwagger();
         app.UseSwaggerUI();
